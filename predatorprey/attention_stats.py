@@ -63,7 +63,9 @@ def plot_attn_stats(distance_vs_weight, exp_dir, penalty):
     n_pts_plt.set_xlabel('Distance')
     n_pts_plt.set_ylabel('Frequency')
     fig.tight_layout()
-    fig.savefig('./plots/penalty={}_AttnWeights.png'.format(penalty))
+    fig.savefig('plots/penalty={}_AttnWeights.png'.format(penalty))
+
+    # fig.savefig('./plots/penalty={}_AttnWeights.png'.format(penalty))
 
 
 def plot_attn_stats_simple(distance_vs_weight, exp_dir, penalty, n_samples, de):

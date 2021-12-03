@@ -195,11 +195,11 @@ def run(args):
             env.close()
             print('Average trajectory length = {}'.format(np.mean(traj_len)))
     
-            from .attention_stats import plot_attn_stats
-            plot_attn_stats(distance_vs_weight, exp_dir)
+            from attention_stats import plot_attn_stats
+            plot_attn_stats(distance_vs_weight, exp_dir, args.penalty)
 
     elif args.mode == 'analysis':
-        from tests.predatorprey.attention_stats import attn_analysis
+        from attention_stats import attn_analysis
         attn_analysis(unseeded_exp_dir, args, seeds=[1])
 
 
