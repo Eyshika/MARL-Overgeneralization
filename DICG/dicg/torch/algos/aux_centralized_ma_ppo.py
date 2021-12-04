@@ -303,9 +303,8 @@ class CentralizedMAPPOWithAuxLoss(MABatchPolopt):
 
         criterion = nn.BCEWithLogitsLoss()
         _, coopPrediction = self.policy.forward(obs, avail_actions)
-        auxLoss = criterion(coopPrediction, coopGroundTruths)
-        loss = policyLoss + auxLoss
-        print("policy loss: "+str(policyLoss)+', auxLoss: '+str(auxLoss))
+        auxLoss = criterion(coopPrediction, torch.unsqueeze(coopGroundTruths, -1))
+        loss = policyLoss + 0.2*auxLoss
         return loss
 
     def _compute_kl_constraint(self, obs, avail_actions, actions=None):
